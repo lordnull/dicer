@@ -14,8 +14,11 @@ Controllers.controller("DicerCtrl", function($scope){
 Controllers.controller("CharactersListCtrl", function($scope){
 //function CharactersListCtrl($scope) {
 	$scope.characters = dustbin.query('dicer.character');
-
+	$scope.newName = '';
 	$scope.createCharacter = function(){
+		if($scope.newName == ''){
+			return;
+		}
 		var newCharacter = {
 			'name':$scope.newName
 		};
