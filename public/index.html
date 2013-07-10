@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="dicer">
 <head>
 	<meta charset="utf-8" />
   <title>Dicer</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+	<link href="bootstrap/css/bootstrap-responsive.min.css" />
   <!--<style type="text/css" media="screen">
     html, body {
       height: 100%;
@@ -23,17 +24,14 @@
       font-family: helvetica;
     }
   </style>-->
-	<script>
-		window.dice = {};
-	</script>
 </head>
-<body ng-controller="DicerCtrl">
+<!--<body ng-controller="DicerCtrl">
 	
-	<div class="row-fluid">
+	<div class="row">
 
 		<div class="span3" ng-controller="CharactersListCtrl">
-			<p ng-repeat="character in characters" ng-click="selectCharacter(character)">
-					{{character.name}}
+			<p ng-repeat="character in characters">
+				<a href="characters/{{character.$metadata.key}}">{{character.name}}</a>
 			</p>
 			<p>
 				<input ng-model="newName" /><button ng-click="createCharacter()">New</button>
@@ -66,8 +64,15 @@
 				<strong>{{roll.sum}}</strong>: {{roll.rolls}}
 			</p>
 		</div>
-	</div>
+	</div>-->
 
+<body>
+
+	<div id="main-view" class="container-fluid" data-ng-view></div>
+
+	<script>
+		window.dice = {};
+	</script>
 	<script src="jquery.js"></script>
 	<script src="underscore-min.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>
@@ -75,6 +80,8 @@
 	<script src="dustbin.js"></script>
 	<script src="dice.parse.js"></script>
 	<script src="dice.eval.js"></script>
-	<script src="controllers.js"></script>
+	<script src="app.js"></script>
+	<script src="dicer.controllers.js"></script>
+
 </body>
 </html>

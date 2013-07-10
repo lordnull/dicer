@@ -1,53 +1,7 @@
-/*var lsKeyFind = function(){
-	var args = [];
-	for(var i = 0; i < arguments.length; i++){
-		args.push(arguments[i]);
-	}
-	var keyPrefix = "^" + args.join('.');
-	var lsLen = localStorage.length;
-	var out = [];
-	var key = '';
-	var pushObj = function(akey){
-		out.push(localStorage.getItem(akey));
-	}
-	for(i = 0; i < lsLen; i++){
-		key = localStorage.key(i);
-		if(key.match(keyPrefix)){
-			pushObj(key);
-		}
-	}
-	return out.map(function(v){
-		return JSON.parse(v);
-	});;
-}
+Controllers = angular.module("dicer.controllers", []);
 
-var lsGetId = function(){
-	var lastId = localStorage.getItem("dicer.counter");
-	if(! lastId){
-		lastId = 0;
-	} else {
-		lastId = parseInt(lastId);
-	}
-	lastId++;
-	localStorage.setItem("dicer.counter", lastId);
-	return lastId;
-}
-
-var lsStore = function(value){
-	var keyParts = [];
-	for(var i = 1; i < arguments.length; i++){
-		keyParts.push(arguments[i]);
-	}
-	if(!value._id){
-		value._id = lsGetId();
-	}
-	keyParts.push(value._id.toString());
-	var key = keyParts.join('.');
-	localStorage.setItem(key, JSON.stringify(value));
-	return value;
-}*/
-
-function DicerCtrl($scope) {
+//function DicerCtrl($scope) {
+Controllers.controller("DicerCtrl", function($scope){
 	$scope.appName = 'Dicer';
 
 	$scope.selectCharacter = function(character){
@@ -55,10 +9,11 @@ function DicerCtrl($scope) {
 	}
 
 	$scope.rollHistory = [];
-}
+});
 
-function CharactersListCtrl($scope) {
-
+Controllers.controller("CharactersListCtrl", function($scope){
+//function CharactersListCtrl($scope) {
+	console.log('der character scope thing');
 	$scope.characters = dustbin.query('dicer.character');
 
 	$scope.createCharacter = function(){
@@ -70,9 +25,14 @@ function CharactersListCtrl($scope) {
 		$scope.characters.push(newCharacter);
 		$scope.newName = '';
 	}
-}
 
-function StatsListCtrl($scope) {
+	$scope.loadCharacter = function(character){
+		console.log('load', character);
+	}
+});
+
+Controllers.controller("StatsListCtrl", function($scope){
+//function StatsListCtrl($scope) {
 	$scope.$watch('selectedCharacter', function(dahDude){
 			if(dahDude){
 				$scope.stats = dustbin.query('dicer.stat').filter(function(stat){
@@ -102,9 +62,10 @@ function StatsListCtrl($scope) {
 	$scope.updateStat = function(statObj){
 		var storable = dustbin.store(statObj);
 	}
-}
+});
 
-function RollsListCtrl($scope) {
+Controllers.controller("RollsListCtrl", function($scope){
+//function RollsListCtrl($scope) {
 	$scope.$watch('selectedCharacter', function(dahDude){
 		if(dahDude){
 			$scope.rolls = dustbin.query('dicer.roll').filter(function(roll){
@@ -149,5 +110,5 @@ function RollsListCtrl($scope) {
 		$scope.rollHistory.unshift(evaled);
 		console.log("I got", evaled);
 	}
-}
+});
 
