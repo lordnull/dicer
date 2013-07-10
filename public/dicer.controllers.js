@@ -16,6 +16,7 @@ Controllers.controller("CharactersListCtrl", function($scope){
 	$scope.newName = '';
 	$scope.createCharacter = function(){
 		if($scope.newName == ''){
+			macgap.app.beep();
 			return;
 		}
 		var newCharacter = {
@@ -44,6 +45,7 @@ Controllers.controller("CharacterViewCtrl", function($scope, $routeParams){
 	$scope.newStatName = '';
 	$scope.createStat = function(){
 		if($scope.newStatName == ''){
+			macgap.app.beep();
 			return;
 		}
 		var newStat = {
@@ -67,6 +69,7 @@ Controllers.controller("CharacterViewCtrl", function($scope, $routeParams){
 	$scope.newRollName = '';
 	$scope.createRoll = function(){
 		if($scope.newRollName == ''){
+			macgap.app.beep();
 			return;
 		}
 		var newRoll = {
