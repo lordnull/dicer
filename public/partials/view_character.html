@@ -1,0 +1,35 @@
+<div class="row">
+
+	<div class="span12">
+		<a href="/">Character List</a> -&gt; {{character.name}}
+	</div>
+
+	<div class="span4">
+		<p ng-repeat="stat in stats">
+			<button ng-click="removeStat(stat)">X</button>{{stat.name}}: <input type="number" ng-change="updateStat(stat)" ng-model="stat.value" step="1" />
+		</p>
+		
+		<p>
+			<input ng-model="newStatName" /><button ng-click="createStat()">New</button>
+		</p>
+	</div>
+
+	<div class="span4">
+		Rolls
+		<p ng-repeat="roll in rolls">
+			<button ng-click="removeRoll(roll)">X</button>{{roll.name}}: <input ng-change="storeRoll(roll)" ng-model="roll.string" /><button ng-click="rollDice(roll)">Roll</button>
+		</p>
+	
+		<p>
+			<input ng-model="newRollName" /><button ng-click="createRoll()">New</button>
+		</p>
+	</div>
+
+	<div class="span4">
+		Roll History <span class="error">{{rollError}}</span>
+		<p ng-repeat="roll in rollHistory">
+			<strong>{{roll.sum}}</strong>: {{roll.rolls}}
+		</p>
+	</div>
+</div>
+

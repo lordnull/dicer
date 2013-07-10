@@ -1,6 +1,6 @@
-<div class="span3" ng-controller="CharactersListCtrl">
+<div class="span12" ng-controller="CharactersListCtrl">
 	<p ng-repeat="character in characters">
-		<a ng-click="loadCharacter(character)" href="characters/{{character.$metadata.key}}">{{character.name}}</a>
+		<a href="characters/{{character.$metadata.key}}">{{character.name}}</a>
 	</p>
 	<p>
 		<input ng-model="newName" /><button ng-click="createCharacter()">New</button>
