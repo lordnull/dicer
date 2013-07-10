@@ -29,6 +29,18 @@ Controllers.controller("CharactersListCtrl", function($scope){
 	}
 });
 
+Controllers.controller("StatCtrl", function($scope){
+    $scope.$watch('stat.value', function(newVal){
+        dustbin.store("dicer.stat", $scope.stat);
+    });
+});
+
+Controllers.controller("RollCtrl", function($scope){
+    $scope.$watch('roll.string', function(newVal){
+        dustbin.store("dicer.roll", $scope.roll);
+    });
+});
+
 Controllers.controller("CharacterViewCtrl", function($scope, $routeParams){
 	var character = dustbin.get("dicer.character")[$routeParams.characterId];
 	$scope.character = character;
