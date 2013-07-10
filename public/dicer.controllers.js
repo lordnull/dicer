@@ -11,6 +11,7 @@ Controllers.controller("DicerCtrl", function($scope){
 });
 
 Controllers.controller("CharactersListCtrl", function($scope){
+	macgap.window.resize({width:400,height:680});
 	$scope.characters = dustbin.query('dicer.character');
 	$scope.newName = '';
 	$scope.createCharacter = function(){
@@ -30,6 +31,7 @@ Controllers.controller("CharactersListCtrl", function($scope){
 Controllers.controller("CharacterViewCtrl", function($scope, $routeParams){
 	var character = dustbin.get("dicer.character")[$routeParams.characterId];
 	$scope.character = character;
+	macgap.window.resize({width:1024,height:680});
 
 	$scope.stats = dustbin.query("dicer.stat").filter(function(stat){
 		return stat.character_key == character.$metadata.key;
